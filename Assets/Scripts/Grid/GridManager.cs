@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -43,6 +44,24 @@ public class GridManager : MonoBehaviour
 
         GameManager.instance.ChangeState(Gamestate.SpawnPawn);
     }
+
+    public Tile GetPawnSpawnTile() 
+    {
+     //return _tiles.Where(t=> t.Key.x < _width/2 && t.Value.walkable).OrderBy(t=>Random.value).First().Value;
+    return _tiles[new Vector2(2,1)];
+    
+    }
+
+
+    public Tile GetKingSpawnTile() 
+    {
+        // fer un switch amb les diferents peçes i fer return per cada peça
+        return _tiles[new Vector2(2, 5)];
+
+
+    }
+
+
 
     public Tile GetTileAtPosition(Vector2 pos)
     {

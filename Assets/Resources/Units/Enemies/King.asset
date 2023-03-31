@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed3668645c4c4fe4d94adf2059cc6a1f, type: 3}
-  m_Name: Pawn
+  m_Name: King
   m_EditorClassIdentifier: 
-  faction: 0
-  unitPrefab: {fileID: 7358661711487622770, guid: 2091c44998f20dd44a3eabcd5c2b6a69, type: 3}
+  faction: 1
+  unitPrefab: {fileID: 8607834736311786099, guid: 8f1836710f0fa9042be050d18a4357be, type: 3}

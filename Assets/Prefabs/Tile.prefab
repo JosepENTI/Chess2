@@ -100,3 +100,5 @@ MonoBehaviour:
   _whiteSprite: {fileID: 286168992, guid: f96242110ac19bc48b73f6fe9dc82f2e, type: 3}
   _blackSprite: {fileID: -1372278536, guid: f96242110ac19bc48b73f6fe9dc82f2e, type: 3}
   _renderer: {fileID: 740141366710870774}
+  isWalkable: 1
+  occupiedUnit: {fileID: 0}
