@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private Sprite _whiteSprite, _blackSprite;
     [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private GameObject _highlight;
     [SerializeField] private bool isWalkable;
 
     public BaseUnit occupiedUnit;
@@ -13,8 +14,9 @@ public class Tile : MonoBehaviour
     public bool walkable => isWalkable && occupiedUnit == null;
 
 
-    public void Init(bool isOffset)
+    public void Init(int x, int y)
     {
+        var isOffset = (x + y) % 2 == 1;
         _renderer.sprite = isOffset? _blackSprite : _whiteSprite;
     }
 
@@ -27,11 +29,21 @@ public class Tile : MonoBehaviour
 
     }
 
-    private void OnMouseDown()
+    private void OnMouseEnter()
+    {
+        _highlight.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        _highlight.SetActive(false);
+    }
+
+    void OnMouseDown()
     {
         if (GameManager.instance.gameState != Gamestate.PawnTurn) return;
 
-        if (occupiedUnit == null)
+        if (occupiedUnit != null)
         {
             if (occupiedUnit.faction == Faction.Hero)
             {
@@ -42,6 +54,7 @@ public class Tile : MonoBehaviour
                 if (UnitManager.instance.selectedPawn != null)
                 {
                     var enemy = (BaseEnemy)occupiedUnit;
+                    //de momento
                     Destroy(enemy.gameObject);
                     UnitManager.instance.SetSelectedPawn(null);
                 }
