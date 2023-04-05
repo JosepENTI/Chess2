@@ -103,7 +103,7 @@ MonoBehaviour:
   _blackSprite: {fileID: -1372278536, guid: f96242110ac19bc48b73f6fe9dc82f2e, type: 3}
   _renderer: {fileID: 740141366710870774}
   _highlight: {fileID: 4764272663194070797}
-  isWalkable: 1
+  isWalkable: 0
   occupiedUnit: {fileID: 0}
 --- !u!61 &4038406861189777678
 BoxCollider2D:
