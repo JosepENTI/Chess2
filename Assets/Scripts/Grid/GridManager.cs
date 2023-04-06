@@ -73,5 +73,16 @@ public class GridManager : MonoBehaviour
         return null;
     }
 
-  
+    public void SetWalkableOff()
+    {
+        for (int i = 0; i < _width; i++)
+        {
+            for (int j = 0; j < _height; j++)
+            {
+                GridManager.instance.GetTileAtPosition(new Vector2(0 + i, 0 + j)).isWalkable = false;
+            }
+
+        }
+
+    }
 }
