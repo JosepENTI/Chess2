@@ -35,7 +35,7 @@ public class UnitManager : MonoBehaviour
     {
         // de moment es un que es el rei, quan hi hagi més s'ha de cambiar la
         // 
-            var kingPrefab = GetRandomUnit<BaseEnemy>(Faction.Enemy);
+            var kingPrefab = GetRandomUnit<BaseKing>(Faction.King);
             var spawnedKing = Instantiate(kingPrefab);
             var spawnTile = GridManager.instance.GetKingSpawnTile();
 
@@ -51,6 +51,8 @@ public class UnitManager : MonoBehaviour
             var randomPrefab = GetRandomUnit<BaseEnemy>(Faction.Enemy);
             var spawnedEnemy = Instantiate(randomPrefab);
             var randomSpawnTile = GridManager.instance.GetEnemySpawnTile();
+
+            randomSpawnTile.SetUnit(spawnedEnemy);
         }
        
         GameManager.instance.ChangeState(Gamestate.SpawnKing);
@@ -60,13 +62,11 @@ public class UnitManager : MonoBehaviour
     {
         //posible canvi per fer diferents spawns
         return (T)units.Where(u=>u.faction == faction).OrderBy(o=>Random.value).First().unitPrefab; 
-    
     }
 
     public void SetSelectedPawn(BaseHero pawn) 
     {
      selectedPawn= pawn;
-    
     }
 
 }

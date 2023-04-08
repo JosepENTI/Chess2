@@ -10,13 +10,11 @@ public class ScriptableUnits : ScriptableObject
 {
     public Faction faction;
     public BaseUnit unitPrefab;
-
-  
 }
 
 public enum Faction 
 {
     Hero = 0,
     Enemy = 1,
-
+    King = 2,
 }

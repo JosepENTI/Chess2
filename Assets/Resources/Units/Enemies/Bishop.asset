@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed3668645c4c4fe4d94adf2059cc6a1f, type: 3}
-  m_Name: King
+  m_Name: Bishop
   m_EditorClassIdentifier: 
   faction: 1
-  unitPrefab: {fileID: 8607834736311786099, guid: 8f1836710f0fa9042be050d18a4357be, type: 3}
+  unitPrefab: {fileID: 4912951519987812611, guid: 1394c8b747c0834419b361c30e745acc, type: 3}
