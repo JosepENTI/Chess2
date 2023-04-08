@@ -31,7 +31,7 @@ public class UnitManager : MonoBehaviour
 
         GameManager.instance.ChangeState(Gamestate.SpawnEnemies);
     }   
-    public void SpawnEnemies() 
+    public void SpawnKing() 
     {
         // de moment es un que es el rei, quan hi hagi més s'ha de cambiar la
         // 
@@ -41,9 +41,19 @@ public class UnitManager : MonoBehaviour
 
             spawnTile.SetUnit(spawnedKing);
 
-
         GameManager.instance.ChangeState(Gamestate.PawnTurn);
+    }
 
+    public void SpawnEnemies(int enemies)
+    {
+        for (int i = 0; i < enemies; i++)
+        {
+            var randomPrefab = GetRandomUnit<BaseEnemy>(Faction.Enemy);
+            var spawnedEnemy = Instantiate(randomPrefab);
+            var randomSpawnTile = GridManager.instance.GetEnemySpawnTile();
+        }
+       
+        GameManager.instance.ChangeState(Gamestate.SpawnKing);
     }
 
     private T GetRandomUnit<T>(Faction faction) where T :  BaseUnit 

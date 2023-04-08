@@ -30,8 +30,11 @@ public class GameManager : MonoBehaviour
             case Gamestate.SpawnPawn:
                 UnitManager.instance.SpawnHeroes();
                 break;
+            case Gamestate.SpawnKing:
+                UnitManager.instance.SpawnKing();
+                break;
             case Gamestate.SpawnEnemies:
-                UnitManager.instance.SpawnEnemies();
+                UnitManager.instance.SpawnEnemies(5);
                 break;
             case Gamestate.PawnTurn:
 
@@ -53,7 +56,8 @@ public enum Gamestate
 {
 GenerateGrid = 0,
 SpawnPawn = 1,
-SpawnEnemies = 2,
-PawnTurn=3,
-EnemiesTurn = 4
+SpawnKing = 2,
+SpawnEnemies = 3,
+PawnTurn= 4,
+EnemiesTurn = 5
 }
