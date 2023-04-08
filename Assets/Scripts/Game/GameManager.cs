@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Gamestate gameState;
+    public int enemyNum;
 
     void Awake()
     {
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
                 UnitManager.instance.SpawnKing();
                 break;
             case Gamestate.SpawnEnemies:
-                UnitManager.instance.SpawnEnemies(5);
+                UnitManager.instance.SpawnEnemies(enemyNum);
                 break;
             case Gamestate.PawnTurn:
 
