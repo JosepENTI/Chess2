@@ -11,6 +11,9 @@ public class UnitManager : MonoBehaviour
 
     private List<ScriptableUnits> units;
 
+    public bool isTower;
+    public bool isAlfil;
+
     private void Awake()
     {
         instance = this;
@@ -67,6 +70,25 @@ public class UnitManager : MonoBehaviour
     public void SetSelectedPawn(BaseHero pawn) 
     {
      selectedPawn= pawn;
+    }
+
+
+    public void SetTower()
+    {
+        isTower = true;
+        isAlfil = false;
+    }
+
+    public void SetAlfil()
+    {
+        isTower = false;
+        isAlfil = true;
+    }
+
+    public void SetKing()
+    {
+        isTower = false;
+        isAlfil = false;
     }
 
 }

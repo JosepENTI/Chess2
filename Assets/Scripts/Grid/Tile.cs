@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Tile : MonoBehaviour
 {
     [SerializeField] private Sprite _whiteSprite, _blackSprite;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
+    [SerializeField] private GameObject redHighlight;
     public bool isWalkable;
 
     public Tile pawnPosition;
@@ -22,13 +25,28 @@ public class Tile : MonoBehaviour
     private void Update()
     {
         pawnLastPosition = pawnPosition;
+
+        if (Input.GetKeyDown(KeyCode.R)) 
+        {
+            SceneManager.LoadScene("Tutorial_1");
+        
+        }
+
+        if (isWalkable == true)
+        {
+            redHighlight.SetActive(true);
+
+        }
+        else 
+        {
+        redHighlight.SetActive (false);
+        }
     }
-
-
     public void Init(int x, int y)
     {
         var isOffset = (x + y) % 2 == 1;
         _renderer.sprite = isOffset? _blackSprite : _whiteSprite;
+        
         
     }
 
@@ -62,17 +80,45 @@ public class Tile : MonoBehaviour
                 UnitManager.instance.SetSelectedPawn((BaseHero)occupiedUnit);
                 pawnPosition = GridManager.instance.GetTileAtPosition(new Vector2(UnitManager.instance.selectedPawn.occupiedTile.transform.position.x,
            UnitManager.instance.selectedPawn.occupiedTile.transform.position.y));
-                SetWalkableKing();
+
                 
+                if (UnitManager.instance.isTower == true) 
+                {
+                    SetWalkableTower();
+                }
+                else if(UnitManager.instance.isAlfil == true) 
+                {
+                    SetWalkableAlfil();
+                }
+                else
+                {
+                    SetWalkableKing();
+                }
+
+
             }
             else
             {
-                if (UnitManager.instance.selectedPawn != null )
+                if (UnitManager.instance.selectedPawn != null && isWalkable == true )
                 {
                     var enemy = (BaseUnit)occupiedUnit;
                     //de momento
+                    if (enemy.CompareTag("Tower"))
+                    {
+                        UnitManager.instance.SetTower();
+                    }
+                    else if (enemy.CompareTag("Alfil"))
+                    {
+                        UnitManager.instance.SetAlfil();
+                    }
+                    else 
+                    {
+                        UnitManager.instance.SetKing();
+                    }
                     Destroy(enemy.gameObject);
+                    SetUnit(UnitManager.instance.selectedPawn);
                     UnitManager.instance.SetSelectedPawn(null);
+                    GridManager.instance.SetWalkableOff();
                 }
 
             }
