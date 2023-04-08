@@ -67,9 +67,9 @@ public class Tile : MonoBehaviour
             }
             else
             {
-                if (UnitManager.instance.selectedPawn != null)
+                if (UnitManager.instance.selectedPawn != null )
                 {
-                    var enemy = (BaseEnemy)occupiedUnit;
+                    var enemy = (BaseUnit)occupiedUnit;
                     //de momento
                     Destroy(enemy.gameObject);
                     UnitManager.instance.SetSelectedPawn(null);

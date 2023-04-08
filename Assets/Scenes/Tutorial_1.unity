@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  enemyNum: 3
 --- !u!4 &574965610
 Transform:
   m_ObjectHideFlags: 0
