@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5061871725761461036}
   m_Layer: 0
   m_Name: B_Knight
-  m_TagString: Untagged
+  m_TagString: Horse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
