@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Gamestate gameState;
     public int enemyNum;
+    public GameObject panel;
 
     void Awake()
     {
@@ -49,7 +50,13 @@ public class GameManager : MonoBehaviour
     
     
     }
-   
+
+    public void ActivePanel()
+    {
+        panel.SetActive(true);
+
+    }
+
 }
 
 

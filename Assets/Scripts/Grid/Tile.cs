@@ -111,9 +111,14 @@ public class Tile : MonoBehaviour
                     {
                         UnitManager.instance.SetAlfil();
                     }
-                    else 
+                    else if (enemy.CompareTag("Horse")) 
+                    {
+                    
+                    }
+                    else
                     {
                         UnitManager.instance.SetKing();
+                        GameManager.instance.ActivePanel();
                     }
                     Destroy(enemy.gameObject);
                     SetUnit(UnitManager.instance.selectedPawn);
