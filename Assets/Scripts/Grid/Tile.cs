@@ -81,14 +81,18 @@ public class Tile : MonoBehaviour
                 pawnPosition = GridManager.instance.GetTileAtPosition(new Vector2(UnitManager.instance.selectedPawn.occupiedTile.transform.position.x,
            UnitManager.instance.selectedPawn.occupiedTile.transform.position.y));
 
-                
-                if (UnitManager.instance.isTower == true) 
+
+                if (UnitManager.instance.isTower == true)
                 {
                     SetWalkableTower();
                 }
-                else if(UnitManager.instance.isAlfil == true) 
+                else if (UnitManager.instance.isAlfil == true)
                 {
                     SetWalkableAlfil();
+                }
+                else if (UnitManager.instance.isKnight == true) 
+                {
+                    SetWalkableKnight();
                 }
                 else
                 {
@@ -113,7 +117,7 @@ public class Tile : MonoBehaviour
                     }
                     else if (enemy.CompareTag("Horse")) 
                     {
-                    
+                        UnitManager.instance.SetKnight();
                     }
                     else
                     {
@@ -146,131 +150,54 @@ public class Tile : MonoBehaviour
 
     public void SetWalkableKing() 
     {
-
-        if (GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-           pawnPosition.transform.position.y - 1)) == null)
+        for(int i = -1; i <= 1; i++) // top row
         {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-              pawnPosition.transform.position.y)).isWalkable = true;
+            //TOP ROW
+            Tile topTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y + 1));
+            if (topTile != null)
+                topTile.isWalkable = true;
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
+            //MID ROW
+            if (i != 0) {
+                Tile middleTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y));
+                if (middleTile != null)
+                    middleTile.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
+            //BOTTOM ROW
+            Tile bottomTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y - 1));
+            if (bottomTile != null)
+                bottomTile.isWalkable = true;
         }
-        else if (GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-           pawnPosition.transform.position.y)) == null)
-        {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-              pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-        }
-        else if (GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-           pawnPosition.transform.position.y + 1)) == null)
-        {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-        }
-        else if (GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-           pawnPosition.transform.position.y - 1)) == null)
-        {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-        }
-        else 
-        {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y + 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 1,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 1,
-               pawnPosition.transform.position.y - 1)).isWalkable = true;
-
-
-        }
-
-
     }
 
     public void SetWalkableTower() 
     {
-        
-
         for (int i = 0; i < 6; i++) 
         {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y + i)).isWalkable = true;
+            Tile topTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x, pawnPosition.transform.position.y + i));
+            if (topTileT != null) 
+            {
+                topTileT.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x,
-               pawnPosition.transform.position.y - i)).isWalkable = true;
+            Tile botTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x, pawnPosition.transform.position.y - i));
+            if (botTileT != null)
+            {
+                botTileT.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i,
-               pawnPosition.transform.position.y)).isWalkable = true;
+            Tile rightTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x+i, pawnPosition.transform.position.y));
+            if (rightTileT != null)
+            {
+                rightTileT.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i,
-               pawnPosition.transform.position.y)).isWalkable = true;
-
+            Tile leftTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y));
+            if (leftTileT != null)
+            {
+                leftTileT.isWalkable = true;
+            }
         }                
     }
 
@@ -278,22 +205,132 @@ public class Tile : MonoBehaviour
     public void SetWalkableAlfil() 
     {
       
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x+ i,
-               pawnPosition.transform.position.y + i)).isWalkable = true;
+            Tile topRTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x+i, pawnPosition.transform.position.y + i));
+            if (topRTileT != null)
+            {
+                topRTileT.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x +i,
-               pawnPosition.transform.position.y - i)).isWalkable = true;
+            Tile topLTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x+i, pawnPosition.transform.position.y - i));
+            if (topLTileT != null)
+            {
+                topLTileT.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i,
-               pawnPosition.transform.position.y+i)).isWalkable = true;
+            Tile botRTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y+i));
+            if (botRTileT != null)
+            {
+                botRTileT.isWalkable = true;
+            }
 
-            GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i,
-               pawnPosition.transform.position.y-i)).isWalkable = true;
+            Tile botLTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y-i));
+            if (botLTileT != null)
+            {
+                botLTileT.isWalkable = true;
+            }
 
         }
     }
 
-    
+    public void SetWalkableQueen()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Tile topTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x, pawnPosition.transform.position.y + i));
+            if (topTileT != null)
+            {
+                topTileT.isWalkable = true;
+            }
+
+            Tile botTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x, pawnPosition.transform.position.y - i));
+            if (botTileT != null)
+            {
+                botTileT.isWalkable = true;
+            }
+
+            Tile rightTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y));
+            if (rightTileT != null)
+            {
+                rightTileT.isWalkable = true;
+            }
+
+            Tile leftTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y));
+            if (leftTileT != null)
+            {
+                leftTileT.isWalkable = true;
+            }
+
+
+            Tile topRTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y + i));
+            if (topRTileT != null)
+            {
+                topRTileT.isWalkable = true;
+            }
+
+            Tile topLTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y - i));
+            if (topLTileT != null)
+            {
+                topLTileT.isWalkable = true;
+            }
+
+            Tile botRTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y + i));
+            if (botRTileT != null)
+            {
+                botRTileT.isWalkable = true;
+            }
+
+            Tile botLTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y - i));
+            if (botLTileT != null)
+            {
+                botLTileT.isWalkable = true;
+            }
+        }
+
+    }
+
+    public void SetWalkableKnight()
+    {
+
+        for (int i = -1; i <= 1; i++) // top row
+        {
+            //TOP ROW
+            
+
+            //MID ROW
+            if (i != 0)
+            {
+                Tile topTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y + 2));
+                if (topTile != null)
+                    topTile.isWalkable = true;
+
+
+                Tile bottomTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y - 2));
+                if (bottomTile != null)
+                    bottomTile.isWalkable = true;
+
+
+                Tile rightTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 2, pawnPosition.transform.position.y + i));
+                if (rightTile != null)
+                    rightTile.isWalkable = true;
+
+
+                Tile leftTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 2, pawnPosition.transform.position.y + i));
+                if (leftTile != null)
+                    leftTile.isWalkable = true;
+
+            }
+
+            //BOTTOM ROW
+           
+        }
+
+
+
+
+    }
+
 }
+
+
