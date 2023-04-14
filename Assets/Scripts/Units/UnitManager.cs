@@ -13,6 +13,7 @@ public class UnitManager : MonoBehaviour
 
     public bool isTower;
     public bool isAlfil;
+    public bool isKnight;
 
     private void Awake()
     {
@@ -77,18 +78,29 @@ public class UnitManager : MonoBehaviour
     {
         isTower = true;
         isAlfil = false;
+        isKnight = false;
     }
 
     public void SetAlfil()
     {
         isTower = false;
         isAlfil = true;
+        isKnight = false;
     }
 
     public void SetKing()
     {
         isTower = false;
         isAlfil = false;
+        isKnight = false;
+    }
+
+    public void SetKnight() 
+    {
+        isTower = false;
+        isAlfil = false;
+        isKnight = true;
+
     }
 
 }
