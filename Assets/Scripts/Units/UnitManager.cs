@@ -79,7 +79,7 @@ public class UnitManager : MonoBehaviour
         GameManager.instance.ChangeState(Gamestate.SpawnKing);
     }
 
-    private T GetRandomUnit<T>(Faction faction) where T :  BaseUnit 
+    public T GetRandomUnit<T>(Faction faction) where T :  BaseUnit 
     {
         //posible canvi per fer diferents spawns
         return (T)units.Where(u=>u.faction == faction).OrderBy(o=>Random.value).First().unitPrefab; 
