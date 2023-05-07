@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8784314, g: 0.627451, b: 0.28627452, a: 0.9019608}
+  m_Color: {r: 0.37647063, g: 0.37254903, b: 0.36078432, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8235294, g: 0.5529412, b: 0.18431373, a: 1}
+  m_Color: {r: 0.5882353, g: 0.58431375, b: 0.5803922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1339,6 +1339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a25fcb6e42e5c143959aafe4114a4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyToMove: {fileID: 0}
+  enemyPosition: {fileID: 0}
+  positionToMoveT: {fileID: 0}
+  positionToMoveA: {fileID: 0}
+  positionToMoveK: {fileID: 0}
 --- !u!4 &2001876945
 Transform:
   m_ObjectHideFlags: 0
@@ -1405,7 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7075472, g: 0.4996063, b: 0.21693665, a: 1}
+  m_Color: {r: 0.4528302, g: 0.44467926, b: 0.43360627, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

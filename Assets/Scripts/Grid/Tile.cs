@@ -8,6 +8,8 @@ using UnityEngine.UIElements;
 
 public class Tile : MonoBehaviour
 {
+    public static Tile instance;
+
     [SerializeField] private Sprite _whiteSprite, _blackSprite;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
@@ -58,7 +60,6 @@ public class Tile : MonoBehaviour
         unit.occupiedTile = this;
 
     }
-
     private void OnMouseEnter()
     {
         _highlight.SetActive(true);
@@ -123,11 +124,12 @@ public class Tile : MonoBehaviour
                     {
                         UnitManager.instance.SetKing();
                         GameManager.instance.ActivePanel();
-                    }
-                    Destroy(enemy.gameObject);
+                    }                  
+                    Destroy(enemy.gameObject);                    
                     SetUnit(UnitManager.instance.selectedPawn);
                     UnitManager.instance.SetSelectedPawn(null);
                     GridManager.instance.SetWalkableOff();
+                    GameManager.instance.ChangeState(Gamestate.EnemiesTurn);
                 }
 
             }
@@ -140,6 +142,7 @@ public class Tile : MonoBehaviour
                 SetUnit(UnitManager.instance.selectedPawn);               
                 UnitManager.instance.SetSelectedPawn(null);
                 GridManager.instance.SetWalkableOff();
+                GameManager.instance.ChangeState(Gamestate.EnemiesTurn);
             }
         
         
