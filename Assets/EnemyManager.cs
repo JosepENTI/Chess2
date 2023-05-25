@@ -28,16 +28,18 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        enemyToMove = FindObjectOfType<BaseEnemy>();
-
-        if (enemyToMove != null)
+        if (GameManager.instance.gameState == Gamestate.EnemiesTurn)
         {
 
+            enemyToMove = FindObjectOfType<BaseEnemy>();
 
-            enemyPosition = GridManager.instance.GetTileAtPosition(new Vector2(enemyToMove.occupiedTile.transform.position.x,
-           enemyToMove.occupiedTile.transform.position.y));
-            if (GameManager.instance.gameState == Gamestate.EnemiesTurn)
+            if (enemyToMove != null)
             {
+
+
+                enemyPosition = GridManager.instance.GetTileAtPosition(new Vector2(enemyToMove.occupiedTile.transform.position.x,
+               enemyToMove.occupiedTile.transform.position.y));
+
 
 
                 if (enemyToMove.CompareTag("Tower"))
@@ -49,6 +51,7 @@ public class EnemyManager : MonoBehaviour
 
                         SetEnemy(enemyToMove, positionToMoveT);
                         GridManager.instance.SetWalkableOff();
+                        enemyToMove = null;
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
                 }
@@ -61,6 +64,7 @@ public class EnemyManager : MonoBehaviour
 
                         SetEnemy(enemyToMove, positionToMoveA);
                         GridManager.instance.SetWalkableOff();
+                        enemyToMove = null;
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
                 }
@@ -73,14 +77,19 @@ public class EnemyManager : MonoBehaviour
 
                         SetEnemy(enemyToMove, positionToMoveK);
                         GridManager.instance.SetWalkableOff();
+                        enemyToMove = null;
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
                 }
                 else
-                    GameManager.instance.ChangeState(Gamestate.PawnTurn);
+                    enemyToMove = null;
+                GameManager.instance.ChangeState(Gamestate.PawnTurn);
+
+
+            
             }
-            else GameManager.instance.ChangeState(Gamestate.PawnTurn);
         }
+        else GameManager.instance.ChangeState(Gamestate.PawnTurn);
     }
 
     public Tile EnemyWalkableTower()
