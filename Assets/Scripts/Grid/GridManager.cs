@@ -52,6 +52,12 @@ public class GridManager : MonoBehaviour
     
     }
 
+    public Tile GetInitialTile()
+    {        
+        return _tiles[new Vector2(0, 0)];
+
+    }
+
     public Tile GetKingSpawnTile() 
     {
         // fer un switch amb les diferents peçes i fer return per cada peça
@@ -60,7 +66,12 @@ public class GridManager : MonoBehaviour
 
     public Tile GetEnemySpawnTile()
     {
-        return _tiles.Where(t => t.Key.y > _height / 2).OrderBy(t => Random.value).First().Value;
+       
+       return _tiles.Where(t => t.Key.y > _height / 2 ).OrderBy(t => Random.value).First().Value;
+        
+        
+       
+        
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

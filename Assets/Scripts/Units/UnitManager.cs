@@ -55,14 +55,31 @@ public class UnitManager : MonoBehaviour
             var randomPrefab = GetRandomUnit<BaseEnemy>(Faction.Enemy);
             var spawnedEnemy = Instantiate(randomPrefab);
             var randomSpawnTile = GridManager.instance.GetEnemySpawnTile();
+            var spawnKingTile = GridManager.instance.GetKingSpawnTile();
+            
 
-            randomSpawnTile.SetUnit(spawnedEnemy);
+
+            if (randomSpawnTile.occupiedUnit == null && randomSpawnTile != spawnKingTile)
+            {
+                randomSpawnTile.SetUnit(spawnedEnemy);
+            }
+            else 
+            {
+                 randomSpawnTile = GridManager.instance.GetEnemySpawnTile();
+                if (randomSpawnTile.occupiedUnit == null && randomSpawnTile != spawnKingTile)
+                {
+                    randomSpawnTile.SetUnit(spawnedEnemy);
+                }
+            }
+           
+                
+            
         }
        
         GameManager.instance.ChangeState(Gamestate.SpawnKing);
     }
 
-    private T GetRandomUnit<T>(Faction faction) where T :  BaseUnit 
+    public T GetRandomUnit<T>(Faction faction) where T :  BaseUnit 
     {
         //posible canvi per fer diferents spawns
         return (T)units.Where(u=>u.faction == faction).OrderBy(o=>Random.value).First().unitPrefab; 

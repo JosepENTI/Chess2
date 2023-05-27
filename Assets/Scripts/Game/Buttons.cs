@@ -24,6 +24,9 @@ public class Buttons : MonoBehaviour
             case "play":
                 SceneManager.LoadScene("Tutorial_1");
                 break;
+            case "settings":
+                SceneManager.LoadScene("Settings");
+                break;
             case "exit":
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
