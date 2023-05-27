@@ -43,7 +43,9 @@ public class GameManager : MonoBehaviour
                 break;
             case Gamestate.EnemiesTurn:
                 break;
-                default:
+            case Gamestate.GameOver:
+                break;
+            default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
 
         }
@@ -67,5 +69,6 @@ SpawnPawn = 1,
 SpawnKing = 2,
 SpawnEnemies = 3,
 PawnTurn= 4,
-EnemiesTurn = 5
+EnemiesTurn = 5,
+GameOver = 6
 }
