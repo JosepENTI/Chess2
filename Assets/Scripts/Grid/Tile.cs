@@ -43,6 +43,12 @@ public class Tile : MonoBehaviour
         {
         redHighlight.SetActive (false);
         }
+
+        if (FindObjectOfType<BaseHero>().occupiedTile.occupiedUnit == null) 
+        {
+            FindObjectOfType<BaseHero>().occupiedTile.occupiedUnit = FindObjectOfType<BaseHero>();
+        }
+
     }
     public void Init(int x, int y)
     {
@@ -54,7 +60,10 @@ public class Tile : MonoBehaviour
 
     public void SetUnit(BaseUnit unit) 
     {
-        if(unit.occupiedTile != null) unit.occupiedTile.occupiedUnit = null;
+        if (unit.occupiedTile != null) 
+        {
+            unit.occupiedTile.occupiedUnit = null;
+        } 
         unit.transform.position = transform.position;
         occupiedUnit = unit;
         unit.occupiedTile = this;
@@ -72,8 +81,11 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (GameManager.instance.gameState != Gamestate.PawnTurn) return;
-
+        if (GameManager.instance.gameState != Gamestate.PawnTurn) 
+        {
+            return;
+        }
+        
         if (occupiedUnit != null)
         {
             if (occupiedUnit.faction == Faction.Hero)
@@ -158,8 +170,9 @@ public class Tile : MonoBehaviour
             //TOP ROW
             Tile topTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y + 1));
             if (topTile != null)
+            {
                 topTile.isWalkable = true;
-
+            }
             //MID ROW
             if (i != 0) {
                 Tile middleTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y));
@@ -170,7 +183,9 @@ public class Tile : MonoBehaviour
             //BOTTOM ROW
             Tile bottomTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y - 1));
             if (bottomTile != null)
+            {
                 bottomTile.isWalkable = true;
+            }
         }
     }
 

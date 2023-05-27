@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,9 +10,8 @@ public class EnemyManager : MonoBehaviour
 
     public BaseEnemy enemyToMove;
     public Tile enemyPosition;
-    public Tile positionToMoveT;
-    public Tile positionToMoveA;
-    public Tile positionToMoveK;
+    public Tile positionToMove;
+
     // Update is called once per frame
 
 
@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
         if (GameManager.instance.gameState == Gamestate.EnemiesTurn)
         {
 
-            enemyToMove = FindObjectOfType<BaseEnemy>();
+            enemyToMove = RandomEnemy();
 
             if (enemyToMove != null)
             {
@@ -44,25 +44,26 @@ public class EnemyManager : MonoBehaviour
 
                 if (enemyToMove.CompareTag("Tower"))
                 {
-                    positionToMoveT = EnemyWalkableTower();
+                    positionToMove = EnemyWalkableTower();
                     //funcion movimiento torre
-                    if (positionToMoveT.isWalkable == true)
+                    if (positionToMove.isWalkable == true)
                     {
 
-                        SetEnemy(enemyToMove, positionToMoveT);
+                        SetEnemy(enemyToMove, positionToMove);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
+                   
                 }
                 else if (enemyToMove.CompareTag("Alfil"))
                 {
-                    positionToMoveA = EnemyWalkableAlfil();
+                    positionToMove = EnemyWalkableAlfil();
                     //funcion movimiento alfil
-                    if (positionToMoveA.isWalkable == true)
+                    if (positionToMove.isWalkable == true)
                     {
 
-                        SetEnemy(enemyToMove, positionToMoveA);
+                        SetEnemy(enemyToMove, positionToMove);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
@@ -70,12 +71,12 @@ public class EnemyManager : MonoBehaviour
                 }
                 else if (enemyToMove.CompareTag("Horse"))
                 {
-                    positionToMoveK = EnemyWalkableKnight();
+                    positionToMove = EnemyWalkableKnight();
                     //funcion movimiento caballo
-                    if (positionToMoveK.isWalkable == true)
+                    if (positionToMove.isWalkable == true)
                     {
 
-                        SetEnemy(enemyToMove, positionToMoveK);
+                        SetEnemy(enemyToMove, positionToMove);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
@@ -88,8 +89,9 @@ public class EnemyManager : MonoBehaviour
 
             
             }
+            else GameManager.instance.ChangeState(Gamestate.PawnTurn);
         }
-        else GameManager.instance.ChangeState(Gamestate.PawnTurn);
+        
     }
 
     public Tile EnemyWalkableTower()
@@ -131,7 +133,7 @@ public class EnemyManager : MonoBehaviour
 
         }
 
-        index = Random.Range(0, positions.Count);
+        index = UnityEngine.Random.Range(0, positions.Count);
         tileReturned = positions[index];
         return tileReturned;
 
@@ -174,7 +176,7 @@ public class EnemyManager : MonoBehaviour
             positions.Add(botRTileT);
             positions.Add(botLTileT);
         }
-        index = Random.Range(0, positions.Count);
+        index = UnityEngine.Random.Range(0, positions.Count);
         tileReturned = positions[index];
         return tileReturned;
     }
@@ -195,23 +197,28 @@ public class EnemyManager : MonoBehaviour
             {
                 Tile topTile = GridManager.instance.GetTileAtPosition(new Vector2(enemyPosition.transform.position.x + i, enemyPosition.transform.position.y + 2));
                 if (topTile != null)
+                {
                     topTile.isWalkable = true;
+                }
 
 
                 Tile bottomTile = GridManager.instance.GetTileAtPosition(new Vector2(enemyPosition.transform.position.x + i, enemyPosition.transform.position.y - 2));
                 if (bottomTile != null)
+                {
                     bottomTile.isWalkable = true;
-
+                }
 
                 Tile rightTile = GridManager.instance.GetTileAtPosition(new Vector2(enemyPosition.transform.position.x + 2, enemyPosition.transform.position.y + i));
                 if (rightTile != null)
+                {
                     rightTile.isWalkable = true;
-
+                }
 
                 Tile leftTile = GridManager.instance.GetTileAtPosition(new Vector2(enemyPosition.transform.position.x - 2, enemyPosition.transform.position.y + i));
                 if (leftTile != null)
+                {
                     leftTile.isWalkable = true;
-
+                }
 
                 positions.Add(topTile);
                 positions.Add(bottomTile);
@@ -224,7 +231,7 @@ public class EnemyManager : MonoBehaviour
 
 
         }
-        index = Random.Range(0, positions.Count);
+        index = UnityEngine.Random.Range(0, positions.Count);
         tileReturned = positions[index];
         return tileReturned;
 
@@ -234,9 +241,37 @@ public class EnemyManager : MonoBehaviour
 
     public void SetEnemy(BaseUnit unit, Tile tile)
     {
-        if (unit.occupiedTile != null) unit.occupiedTile.occupiedUnit = null;
+        if (unit.occupiedTile != null)
+        {
+            unit.occupiedTile.occupiedUnit = null;
+        }
         unit.transform.position = tile.transform.position;
+        tile.occupiedUnit = unit;
         unit.occupiedTile = tile;
+
+    }
+
+
+    public BaseEnemy RandomEnemy() 
+    {
+        var enemies = FindObjectsOfType<BaseEnemy>();
+        if (enemies.Length == 0)
+        {
+            return null;
+        }
+        else
+        {
+            int index;
+            BaseEnemy enemyReturned;
+            index = UnityEngine.Random.Range(0, enemies.Length);
+
+
+
+            enemyReturned = enemies[index];
+
+
+            return enemyReturned;
+        }
 
     }
 }
