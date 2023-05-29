@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Gamestate gameState;
     public int enemyNum;
     public GameObject panel;
+    public GameObject panelGameOver;
 
     void Awake()
     {
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
             case Gamestate.EnemiesTurn:
                 break;
             case Gamestate.GameOver:
+                panelGameOver.SetActive(true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

@@ -243,6 +243,10 @@ public class EnemyManager : MonoBehaviour
     {
         if (unit.occupiedTile != null)
         {
+            if(tile.occupiedUnit.faction == Faction.Hero) 
+            {
+                GameManager.instance.ChangeState(Gamestate.GameOver);
+            }
             unit.occupiedTile.occupiedUnit = null;
         }
         unit.transform.position = tile.transform.position;
