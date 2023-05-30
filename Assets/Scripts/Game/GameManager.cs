@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static System.TimeZoneInfo;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int enemyNum;
     public GameObject panel;
     public GameObject panelGameOver;
+ 
 
     void Awake()
     {
@@ -19,7 +22,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         ChangeState(Gamestate.GenerateGrid);
+
     }
 
     public void ChangeState(Gamestate newState) 
@@ -60,8 +65,53 @@ public class GameManager : MonoBehaviour
         panel.SetActive(true);
 
     }
-
+    public void SceneLoad(string scene)
+    {        
+        switch (scene)
+        {
+            case "Tutorial_1":
+                if (!PlayerPrefs.HasKey("level_2"))
+                {
+                    PlayerPrefs.SetInt("level_2", 1);
+                }
+                SceneManager.LoadScene("level2");
+                break;
+            case "level2":
+                if (!PlayerPrefs.HasKey("level_3"))
+                {
+                    PlayerPrefs.SetInt("level_3", 1);
+                }
+                SceneManager.LoadScene("level3");
+                break;
+            case "level3":
+                if (!PlayerPrefs.HasKey("level_4"))
+                {
+                    PlayerPrefs.SetInt("level_4", 1);
+                }
+                SceneManager.LoadScene("level4");
+                break;
+            case "level4":
+                if (!PlayerPrefs.HasKey("level_5"))
+                {
+                    PlayerPrefs.SetInt("level_5", 1);
+                }
+                SceneManager.LoadScene("level5");
+                break;
+            case "level5":
+                if (!PlayerPrefs.HasKey("level_6"))
+                {
+                    PlayerPrefs.SetInt("level_6", 1);
+                }
+                SceneManager.LoadScene("level6");
+                break;
+            case "level6":
+                break;
+            
+        }
+    }
 }
+
+
 
 
 public enum Gamestate 
