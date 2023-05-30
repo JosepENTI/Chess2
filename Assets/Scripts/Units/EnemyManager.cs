@@ -10,7 +10,9 @@ public class EnemyManager : MonoBehaviour
 
     public BaseEnemy enemyToMove;
     public Tile enemyPosition;
-    public Tile positionToMove;
+    public Tile positionToMoveK;
+    public Tile positionToMoveA;
+    public Tile positionToMoveT;
 
     // Update is called once per frame
 
@@ -44,12 +46,12 @@ public class EnemyManager : MonoBehaviour
 
                 if (enemyToMove.CompareTag("Tower"))
                 {
-                    positionToMove = EnemyWalkableTower();
+                    positionToMoveT = EnemyWalkableTower();
                     //funcion movimiento torre
-                    if (positionToMove.isWalkable == true)
+                    if (positionToMoveT.isWalkable == true)
                     {
 
-                        SetEnemy(enemyToMove, positionToMove);
+                        SetEnemy(enemyToMove, positionToMoveT);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
                         AudioManager.Instance.PlaySFX("MovePiece");
@@ -59,12 +61,12 @@ public class EnemyManager : MonoBehaviour
                 }
                 else if (enemyToMove.CompareTag("Alfil"))
                 {
-                    positionToMove = EnemyWalkableAlfil();
+                    positionToMoveA = EnemyWalkableAlfil();
                     //funcion movimiento alfil
-                    if (positionToMove.isWalkable == true)
+                    if (positionToMoveA.isWalkable == true)
                     {
 
-                        SetEnemy(enemyToMove, positionToMove);
+                        SetEnemy(enemyToMove, positionToMoveA);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
                         AudioManager.Instance.PlaySFX("MovePiece");
@@ -73,12 +75,12 @@ public class EnemyManager : MonoBehaviour
                 }
                 else if (enemyToMove.CompareTag("Horse"))
                 {
-                    positionToMove = EnemyWalkableKnight();
+                    positionToMoveK = EnemyWalkableKnight();
                     //funcion movimiento caballo
-                    if (positionToMove.isWalkable == true)
+                    if (positionToMoveK.isWalkable == true)
                     {
 
-                        SetEnemy(enemyToMove, positionToMove);
+                        SetEnemy(enemyToMove, positionToMoveK);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
                         AudioManager.Instance.PlaySFX("MovePiece");
