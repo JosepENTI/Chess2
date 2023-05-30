@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ChangeState(Gamestate.GenerateGrid);
+        AudioManager.Instance.PlayMusic("Theme");
     }
 
     public void ChangeState(Gamestate newState) 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Gamestate.GameOver:
                 panelGameOver.SetActive(true);
+                AudioManager.Instance.PlaySFX("GameOver");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
