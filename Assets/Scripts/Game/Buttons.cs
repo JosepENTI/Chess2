@@ -13,11 +13,11 @@ public class Buttons : MonoBehaviour
     public Button level4;
     public Button level5;
     public Button level6;
-    private string sceneName;
+    public string sceneName;
 
     private void Start()
     {
-        Screen.SetResolution(1080, 1920, FullScreenMode.FullScreenWindow);
+        Screen.SetResolution(720, 1080, FullScreenMode.FullScreenWindow);
         sceneName = SceneManager.GetActiveScene().name;
 
         level2.interactable = false;
@@ -60,6 +60,9 @@ public class Buttons : MonoBehaviour
         {
             case "return":
                 SceneManager.LoadScene("Menu");
+                break;
+            case "retry":
+                SceneManager.LoadScene(sceneName);
                 break;
             case "next":
                 GameManager.instance.SceneLoad(sceneName);
