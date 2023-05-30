@@ -77,19 +77,19 @@ public class Buttons : MonoBehaviour
                 SceneManager.LoadScene("Settings");
                 break;
             case "level2":
-                SceneManager.LoadScene("level_2");
+                SceneManager.LoadScene("level2");
                 break;
             case "level3":
-                SceneManager.LoadScene("level_3");
+                SceneManager.LoadScene("level3");
                 break;
             case "level4":
-                SceneManager.LoadScene("level_4");
+                SceneManager.LoadScene("level4");
                 break;
             case "level5":
-                SceneManager.LoadScene("level_5");
+                SceneManager.LoadScene("level5");
                 break;
             case "level6":
-                SceneManager.LoadScene("level_6");
+                SceneManager.LoadScene("level6");
                 break;
             case "exit":
 #if UNITY_EDITOR
