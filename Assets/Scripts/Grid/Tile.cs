@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R)) 
         {
-            SceneManager.LoadScene("Tutorial_1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
         }
 
@@ -98,18 +98,22 @@ public class Tile : MonoBehaviour
                 if (UnitManager.instance.isTower == true)
                 {
                     SetWalkableTower();
+                    
                 }
                 else if (UnitManager.instance.isAlfil == true)
                 {
                     SetWalkableAlfil();
+                    
                 }
                 else if (UnitManager.instance.isKnight == true) 
                 {
                     SetWalkableKnight();
+                    
                 }
                 else
                 {
                     SetWalkableKing();
+                   
                 }
 
 

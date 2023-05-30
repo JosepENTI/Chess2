@@ -3,7 +3,14 @@ guid: 218b97fd087e39d42af139593abc6985
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - occupiedTile: {instanceID: 0}
+  - selectedPawn: {instanceID: 0}
+  - sprite: {instanceID: 0}
+  - spritePawn: {fileID: 21300000, guid: 0d4bab51e0b7ead48a6c40ac73021c4f, type: 3}
+  - spriteTower: {fileID: 21300000, guid: 19aed1ab3a89d194192be74848462688, type: 3}
+  - spriteAlfil: {fileID: 21300000, guid: 14780a5aa8481f14190ac27d04f8747c, type: 3}
+  - spriteHorse: {fileID: 21300000, guid: e6c70483962cdfd45bc3f51917c7f576, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
