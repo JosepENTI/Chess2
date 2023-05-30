@@ -52,6 +52,7 @@ public class EnemyManager : MonoBehaviour
                         SetEnemy(enemyToMove, positionToMove);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
+                        AudioManager.Instance.PlaySFX("MovePiece");
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
                    
@@ -66,6 +67,7 @@ public class EnemyManager : MonoBehaviour
                         SetEnemy(enemyToMove, positionToMove);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
+                        AudioManager.Instance.PlaySFX("MovePiece");
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
                 }
@@ -79,6 +81,7 @@ public class EnemyManager : MonoBehaviour
                         SetEnemy(enemyToMove, positionToMove);
                         GridManager.instance.SetWalkableOff();
                         enemyToMove = null;
+                        AudioManager.Instance.PlaySFX("MovePiece");
                         GameManager.instance.ChangeState(Gamestate.PawnTurn);
                     }
                 }
