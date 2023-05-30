@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8939119966755215152}
   - component: {fileID: 263009428042547026}
   - component: {fileID: 7358661711487622770}
+  - component: {fileID: 395181846543038780}
   m_Layer: 0
   m_Name: W_Pawn
   m_TagString: Untagged
@@ -99,3 +100,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupiedTile: {fileID: 0}
   faction: 0
+--- !u!95 &395181846543038780
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572960106606350801}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 405e1838e8d04bc41b97e854cae235b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
