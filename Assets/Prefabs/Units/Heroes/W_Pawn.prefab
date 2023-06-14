@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7358661711487622770}
   m_Layer: 0
   m_Name: W_Pawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupiedTile: {fileID: 0}
   faction: 0
-  selectedPawn: {fileID: 0}
+  pawn: {fileID: 0}
   sprite: {fileID: 263009428042547026}
   spritePawn: {fileID: 21300000, guid: 0d4bab51e0b7ead48a6c40ac73021c4f, type: 3}
   spriteTower: {fileID: 21300000, guid: 19aed1ab3a89d194192be74848462688, type: 3}

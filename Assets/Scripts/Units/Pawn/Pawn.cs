@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pawn : BaseHero
 {
     public static Pawn instance;
-    public BaseHero selectedPawn;
+    public BaseHero pawn;
     public SpriteRenderer sprite;
     public Sprite spritePawn;
     public Sprite spriteTower;
@@ -15,8 +15,8 @@ public class Pawn : BaseHero
     // Start is called before the first frame update
     void Start()
     {
-        selectedPawn = FindObjectOfType<BaseHero>();
-        sprite = selectedPawn.GetComponent<SpriteRenderer>();
+        pawn = FindObjectOfType<BaseHero>();
+        sprite = pawn.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
