@@ -15,6 +15,16 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject _highlight;
     [SerializeField] private GameObject redHighlight;
     public bool isWalkable;
+    //TORRE
+    bool postenemyTopT = false;
+    bool postenemyBotT = false;
+    bool postenemyRT = false;
+    bool postenemyLT = false;
+    //ALFIL
+    bool postenemyTopA = false;
+    bool postenemyBotA = false;
+    bool postenemyRA = false;
+    bool postenemyLA = false;
 
     public Tile pawnPosition;
     public Tile pawnLastPosition;
@@ -198,29 +208,107 @@ public class Tile : MonoBehaviour
         for (int i = 0; i < 6; i++) 
         {
             Tile topTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x, pawnPosition.transform.position.y + i));
+            
             if (topTileT != null) 
-            {
-                topTileT.isWalkable = true;
+            {                
+             
+                if (postenemyTopT == true)
+                {
+                    topTileT.isWalkable = false;
+                }
+                else
+                {
+                    topTileT.isWalkable = true;
+                }
+
+                if (topTileT.occupiedUnit != null)
+                {
+                    if (topTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyTopT = true;
+                    }
+                }
+
             }
 
+            
+
             Tile botTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x, pawnPosition.transform.position.y - i));
+            
             if (botTileT != null)
-            {
-                botTileT.isWalkable = true;
+            {                              
+
+                if (postenemyBotT == true )
+                {
+                    botTileT.isWalkable = false;
+                }
+                else
+                {
+                    botTileT.isWalkable = true;
+                }
+
+                if (botTileT.occupiedUnit != null)
+                {
+                    if (botTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyBotT = true;
+                    }
+                }
+
             }
 
             Tile rightTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x+i, pawnPosition.transform.position.y));
+            
             if (rightTileT != null)
-            {
-                rightTileT.isWalkable = true;
+            {                                
+
+                if (postenemyRT == true )
+                {
+                    rightTileT.isWalkable = false;
+                }
+                else
+                {
+                    rightTileT.isWalkable = true;
+                }
+
+                if (rightTileT.occupiedUnit != null)
+                {
+                    if (rightTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyRT = true;
+                    }
+                }
+
             }
 
             Tile leftTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y));
+            
             if (leftTileT != null)
             {
-                leftTileT.isWalkable = true;
+
+                if (postenemyLT == true)
+                {
+                    leftTileT.isWalkable = false;
+                }
+                else 
+                {
+                    leftTileT.isWalkable = true;
+                }
+
+                if (leftTileT.occupiedUnit != null)
+                {
+                    if (leftTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyLT = true;
+                    }
+                }
             }
-        }                
+            
+        }        
+        postenemyBotT = false;
+        postenemyTopT = false;
+        postenemyLT = false;
+        postenemyRT = false;
     }
 
 
@@ -233,27 +321,96 @@ public class Tile : MonoBehaviour
             if (topRTileT != null)
             {
                 topRTileT.isWalkable = true;
+                if (postenemyTopA == true)
+                {
+                    topRTileT.isWalkable = false;
+                }
+                else
+                {
+                    topRTileT.isWalkable = true;
+                }
+
+                if (topRTileT.occupiedUnit != null)
+                {
+                    if (topRTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyTopA = true;
+                    }
+                }
             }
 
             Tile topLTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x+i, pawnPosition.transform.position.y - i));
             if (topLTileT != null)
             {
-                topLTileT.isWalkable = true;
+                
+
+                if (postenemyBotA == true)
+                {
+                    topLTileT.isWalkable = false;
+                }
+                else
+                {
+                    topLTileT.isWalkable = true;
+                }
+
+                if (topLTileT.occupiedUnit != null)
+                {
+                    if (topLTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyBotA = true;
+                    }
+                }
             }
 
             Tile botRTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y+i));
             if (botRTileT != null)
             {
-                botRTileT.isWalkable = true;
+
+                if (postenemyRA == true)
+                {
+                    botRTileT.isWalkable = false;
+                }
+                else
+                {
+                    botRTileT.isWalkable = true;
+                }
+
+                if (botRTileT.occupiedUnit != null)
+                {
+                    if (botRTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyRA = true;
+                    }
+                }
             }
 
             Tile botLTileT = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - i, pawnPosition.transform.position.y-i));
             if (botLTileT != null)
             {
-                botLTileT.isWalkable = true;
+
+                if (postenemyLA == true)
+                {
+                    botLTileT.isWalkable = false;
+                }
+                else
+                {
+                    botLTileT.isWalkable = true;
+                }
+
+                if (botLTileT.occupiedUnit != null)
+                {
+                    if (botLTileT.occupiedUnit.faction != Faction.Hero)
+                    {
+                        postenemyLA = true;
+                    }
+                }
             }
 
         }
+        postenemyBotA = false;
+        postenemyTopA = false;
+        postenemyLA = false;
+        postenemyRA = false;
     }
 
     public void SetWalkableQueen()
