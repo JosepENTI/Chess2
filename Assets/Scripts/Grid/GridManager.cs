@@ -69,10 +69,18 @@ public class GridManager : MonoBehaviour
        
        return _tiles.Where(t => t.Key.y > _height / 2 ).OrderBy(t => Random.value).First().Value;
         
-        
-       
-        
+                    
     }
+
+    public Tile GetWallSpawnTile()
+    {
+
+        return _tiles.Where(t => t.Key.y > _height / 4).OrderBy(t => Random.value).First().Value;
+
+
+    }
+
+
 
     public Tile GetTileAtPosition(Vector2 pos)
     {

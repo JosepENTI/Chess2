@@ -17,4 +17,5 @@ public enum Faction
     Hero = 0,
     Enemy = 1,
     King = 2,
+    Wall = 3,
 }

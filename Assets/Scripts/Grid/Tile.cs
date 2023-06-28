@@ -146,7 +146,7 @@ public class Tile : MonoBehaviour
                     {
                         UnitManager.instance.SetKnight();
                     }
-                    else
+                    else if (enemy.CompareTag("King"))
                     {
                         UnitManager.instance.SetKing();
                         GameManager.instance.ActivePanel();
@@ -186,20 +186,50 @@ public class Tile : MonoBehaviour
             if (topTile != null)
             {
                 topTile.isWalkable = true;
+                if(topTile.occupiedUnit != null) 
+                {
+                    if (topTile.occupiedUnit.CompareTag("Wall")) 
+                    {
+                        topTile.isWalkable = false;
+                    }
+
+                }
             }
             //MID ROW
-            if (i != 0) {
+            if (i != 0)
+            {
                 Tile middleTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y));
                 if (middleTile != null)
+                {
                     middleTile.isWalkable = true;
-            }
 
+                    if (middleTile.occupiedUnit != null)
+                    {
+                        if (middleTile.occupiedUnit.CompareTag("Wall"))
+                        {
+                            middleTile.isWalkable = false;
+                        }
+
+
+                    }
+                }
+            }
             //BOTTOM ROW
             Tile bottomTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y - 1));
             if (bottomTile != null)
             {
                 bottomTile.isWalkable = true;
-            }
+
+                    if (bottomTile.occupiedUnit != null)
+                    {
+                        if (bottomTile.occupiedUnit.CompareTag("Wall"))
+                        {
+                            bottomTile.isWalkable = false;
+                        }
+
+
+                    }
+                }
         }
     }
 
@@ -223,6 +253,11 @@ public class Tile : MonoBehaviour
 
                 if (topTileT.occupiedUnit != null)
                 {
+                    if (topTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        topTileT.isWalkable = false;
+                    }
+                    
                     if (topTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyTopT = true;
@@ -249,6 +284,12 @@ public class Tile : MonoBehaviour
 
                 if (botTileT.occupiedUnit != null)
                 {
+
+                    if (botTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        botTileT.isWalkable = false;
+                    }
+                     
                     if (botTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyBotT = true;
@@ -273,7 +314,12 @@ public class Tile : MonoBehaviour
 
                 if (rightTileT.occupiedUnit != null)
                 {
-                    if (rightTileT.occupiedUnit.faction != Faction.Hero)
+                    if (rightTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        rightTileT.isWalkable = false;
+                    }
+
+                     if (rightTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyRT = true;
                     }
@@ -297,7 +343,13 @@ public class Tile : MonoBehaviour
 
                 if (leftTileT.occupiedUnit != null)
                 {
-                    if (leftTileT.occupiedUnit.faction != Faction.Hero)
+
+                    if (leftTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        leftTileT.isWalkable = false;
+                    }
+
+                     if (leftTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyLT = true;
                     }
@@ -332,7 +384,13 @@ public class Tile : MonoBehaviour
 
                 if (topRTileT.occupiedUnit != null)
                 {
-                    if (topRTileT.occupiedUnit.faction != Faction.Hero)
+
+                    if (topRTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        topRTileT.isWalkable = false;
+                    }
+
+                     if (topRTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyTopA = true;
                     }
@@ -355,7 +413,13 @@ public class Tile : MonoBehaviour
 
                 if (topLTileT.occupiedUnit != null)
                 {
-                    if (topLTileT.occupiedUnit.faction != Faction.Hero)
+
+                    if (topLTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        topLTileT.isWalkable = false;
+                    }
+
+                     if (topLTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyBotA = true;
                     }
@@ -377,7 +441,13 @@ public class Tile : MonoBehaviour
 
                 if (botRTileT.occupiedUnit != null)
                 {
-                    if (botRTileT.occupiedUnit.faction != Faction.Hero)
+
+                    if (botRTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        botRTileT.isWalkable = false;
+                    }
+
+                     if (botRTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyRA = true;
                     }
@@ -399,7 +469,13 @@ public class Tile : MonoBehaviour
 
                 if (botLTileT.occupiedUnit != null)
                 {
-                    if (botLTileT.occupiedUnit.faction != Faction.Hero)
+
+                    if (botLTileT.occupiedUnit.CompareTag("Wall"))
+                    {
+                        botLTileT.isWalkable = false;
+                    }
+
+                     if (botLTileT.occupiedUnit.faction != Faction.Hero)
                     {
                         postenemyLA = true;
                     }
@@ -482,22 +558,63 @@ public class Tile : MonoBehaviour
             {
                 Tile topTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y + 2));
                 if (topTile != null)
+                {
                     topTile.isWalkable = true;
 
+                    if (topTile.occupiedUnit != null)
+                    {
+                        if (topTile.occupiedUnit.CompareTag("Wall"))
+                        {
+                            topTile.isWalkable = false;
+                        }
+
+                    }
+                }
 
                 Tile bottomTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + i, pawnPosition.transform.position.y - 2));
                 if (bottomTile != null)
+                {
                     bottomTile.isWalkable = true;
 
+                    if (bottomTile.occupiedUnit != null)
+                    {
+                        if (bottomTile.occupiedUnit.CompareTag("Wall"))
+                        {
+                            bottomTile.isWalkable = false;
+                        }
+
+                    }
+                }
 
                 Tile rightTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x + 2, pawnPosition.transform.position.y + i));
                 if (rightTile != null)
+                {
                     rightTile.isWalkable = true;
 
+                    if (rightTile.occupiedUnit != null)
+                    {
+                        if (rightTile.occupiedUnit.CompareTag("Wall"))
+                        {
+                            rightTile.isWalkable = false;
+                        }
+
+                    }
+                }
 
                 Tile leftTile = GridManager.instance.GetTileAtPosition(new Vector2(pawnPosition.transform.position.x - 2, pawnPosition.transform.position.y + i));
                 if (leftTile != null)
+                {
                     leftTile.isWalkable = true;
+
+                    if (leftTile.occupiedUnit != null)
+                    {
+                        if (leftTile.occupiedUnit.CompareTag("Wall"))
+                        {
+                            leftTile.isWalkable = false;
+                        }
+
+                    }
+                }
 
             }
 
