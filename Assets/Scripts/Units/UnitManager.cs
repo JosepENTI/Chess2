@@ -33,7 +33,7 @@ public class UnitManager : MonoBehaviour
             spawnTile.SetUnit(spawnedHero);
 
 
-        GameManager.instance.ChangeState(Gamestate.SpawnEnemies);
+        GameManager.instance.ChangeState(Gamestate.SpawnKing);
     }   
     public void SpawnKing() 
     {
@@ -45,7 +45,7 @@ public class UnitManager : MonoBehaviour
 
             spawnTile.SetUnit(spawnedKing);
 
-        GameManager.instance.ChangeState(Gamestate.PawnTurn);
+        GameManager.instance.ChangeState(Gamestate.SpawnWalls);
     }
 
     public void SpawnEnemies(int enemies)
@@ -76,7 +76,38 @@ public class UnitManager : MonoBehaviour
             
         }
        
-        GameManager.instance.ChangeState(Gamestate.SpawnKing);
+        GameManager.instance.ChangeState(Gamestate.PawnTurn);
+    }
+
+    public void SpawnWalls(int walls)
+    {
+        for (int i = 0; i < walls; i++)
+        {
+            var randomPrefab = GetRandomUnit<BaseWall>(Faction.Wall);
+            var spawnedEnemy = Instantiate(randomPrefab);
+            var randomSpawnTile = GridManager.instance.GetWallSpawnTile();
+            var spawnKingTile = GridManager.instance.GetKingSpawnTile();
+
+
+
+            if (randomSpawnTile.occupiedUnit == null && randomSpawnTile != spawnKingTile)
+            {
+                randomSpawnTile.SetUnit(spawnedEnemy);
+            }
+            else
+            {
+                randomSpawnTile = GridManager.instance.GetWallSpawnTile();
+                if (randomSpawnTile.occupiedUnit == null && randomSpawnTile != spawnKingTile)
+                {
+                    randomSpawnTile.SetUnit(spawnedEnemy);
+                }
+            }
+
+
+
+        }
+
+        GameManager.instance.ChangeState(Gamestate.SpawnEnemies);
     }
 
     public T GetRandomUnit<T>(Faction faction) where T :  BaseUnit 

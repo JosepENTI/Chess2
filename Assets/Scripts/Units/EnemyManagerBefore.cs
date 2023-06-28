@@ -14,13 +14,22 @@ public class EnemyManagerBefore : MonoBehaviour
     public AudioSource effect;
 
     // Update is called once per frame
-
+    //TORRE
+   //public bool postenemyTopT;
+   //public bool postenemyBotT;
+   //public bool postenemyRT;
+   //public bool postenemyLT;
+   // //ALFIL
+   // bool postenemyTopA;
+   // bool postenemyBotA;
+   // bool postenemyRA;
+   // bool postenemyLA;
 
     private void Start()
     {
         //enemyToMove = UnitManager.instance.GetRandomUnit<BaseEnemy>(Faction.Enemy);
 
-
+       
 
 
 
@@ -119,10 +128,32 @@ public class EnemyManagerBefore : MonoBehaviour
                     }
                 }
 
+
+
+                //if (postenemyTopT == true)
+                //{
+                //    topTileT.isWalkable = false;
+                //}
+                //else if(postenemyTopT == false)
+                //{
+                //    topTileT.isWalkable = true;
+
+                //}
+
                 if (topTileT.isWalkable == true)
                 {
                     positions.Add(topTileT);
                 }
+
+                //if (topTileT.occupiedUnit != null)
+                //{
+                //    if (topTileT.occupiedUnit.tag != "Player")
+                //    {
+                //        postenemyTopT = true;
+                //    }
+                //}
+
+
 
             }
 
@@ -139,10 +170,30 @@ public class EnemyManagerBefore : MonoBehaviour
                     }
                 }
 
+                //if (postenemyBotT == true)
+                //{
+                //    botTileT.isWalkable = false;
+                //}
+                //else if (postenemyBotT == false)
+                //{
+                //    botTileT.isWalkable = true;
+
+                //}
+
                 if (botTileT.isWalkable == true)
                 {
                     positions.Add(botTileT);
                 }
+
+                //if (botTileT.occupiedUnit != null)
+                //{
+                //    if (botTileT.occupiedUnit.tag != "Player")
+                //    {
+                //        postenemyBotT = true;
+                //    }
+                //}
+
+
             }
 
             Tile rightTileT = GridManager.instance.GetTileAtPosition(new Vector2(enemyPosition.transform.position.x + i, enemyPosition.transform.position.y));
@@ -158,10 +209,30 @@ public class EnemyManagerBefore : MonoBehaviour
                     }
                 }
 
+                //if (postenemyRT == true)
+                //{
+                //    rightTileT.isWalkable = false;
+                //}
+                //else if (postenemyRT == false)
+                //{
+                //    rightTileT.isWalkable = true;
+
+                //}
+
                 if (rightTileT.isWalkable == true)
                 {
                     positions.Add(rightTileT);
                 }
+
+                //if (rightTileT.occupiedUnit != null)
+                //{
+                //    if (rightTileT.occupiedUnit.tag != "Player")
+                //    {
+                //        postenemyRT = true;
+                //    }
+                //}
+
+
 
             }
 
@@ -179,13 +250,37 @@ public class EnemyManagerBefore : MonoBehaviour
                     }
                 }
 
+                //if (postenemyLT == true)
+                //{
+                //    leftTileT.isWalkable = false;
+                //}
+                //else if (postenemyLT == false)
+                //{
+                //    leftTileT.isWalkable = true;
+
+                //}
+
                 if (leftTileT.isWalkable == true)
                 {
                     positions.Add(leftTileT);
                 }
+
+                //if (leftTileT.occupiedUnit != null)
+                //{
+                //    if (leftTileT.occupiedUnit.tag != "Player")
+                //    {
+                //        postenemyLT = true;
+                //    }
+                //}
+
+
             }
   
         }
+        //postenemyTopT = false;
+        // postenemyBotT = false;
+        // postenemyRT = false;
+        // postenemyLT = false;
 
         index = UnityEngine.Random.Range(0, positions.Count);
         tileReturned = positions[index];

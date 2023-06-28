@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Gamestate gameState;
     public int enemyNum;
+    public int wallNum;
     public GameObject panel;
     public GameObject panelGameOver;
  
@@ -41,11 +42,13 @@ public class GameManager : MonoBehaviour
             case Gamestate.SpawnKing:
                 UnitManager.instance.SpawnKing();
                 break;
+            case Gamestate.SpawnWalls:
+                UnitManager.instance.SpawnWalls(wallNum);
+                break;
             case Gamestate.SpawnEnemies:
                 UnitManager.instance.SpawnEnemies(enemyNum);
                 break;
             case Gamestate.PawnTurn:
-
                 break;
             case Gamestate.EnemiesTurn:
                 break;
@@ -121,7 +124,8 @@ GenerateGrid = 0,
 SpawnPawn = 1,
 SpawnKing = 2,
 SpawnEnemies = 3,
-PawnTurn= 4,
-EnemiesTurn = 5,
-GameOver = 6
+SpawnWalls =4,
+PawnTurn= 5,
+EnemiesTurn = 6,
+GameOver = 7
 }
