@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int wallNum;
     public GameObject panel;
     public GameObject panelGameOver;
+    public GameObject panelPause;
  
 
     void Awake()
@@ -69,6 +70,20 @@ public class GameManager : MonoBehaviour
         panel.SetActive(true);
 
     }
+
+    public void ActivePanelPause()
+    {
+        panelPause.SetActive(true);
+
+    }
+
+    public void DesactivatePanelPause()
+    {
+        panelPause.SetActive(false);
+
+    }
+
+
     public void SceneLoad(string scene)
     {        
         switch (scene)
@@ -127,5 +142,6 @@ SpawnEnemies = 3,
 SpawnWalls =4,
 PawnTurn= 5,
 EnemiesTurn = 6,
-GameOver = 7
+GameOver = 7,
+Pause = 8
 }
