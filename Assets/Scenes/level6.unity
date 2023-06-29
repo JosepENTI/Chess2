@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46fa9ba3453425f4ebd0280ff52da00a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fa6f06d36ca3cf4aa993df4c51e4344, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 45c67dbd4b832c84eace83cbb8093fa4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4089bcdb8a8a9404e9ebdd8b2df2fe63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1845,8 +1845,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   enemyNum: 5
+  wallNum: 0
   panel: {fileID: 243245316}
   panelGameOver: {fileID: 531946720}
+  panelPause: {fileID: 0}
 --- !u!4 &2139727927
 Transform:
   m_ObjectHideFlags: 0
