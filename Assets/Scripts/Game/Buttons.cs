@@ -70,6 +70,14 @@ public class Buttons : MonoBehaviour
             case "selector":
                 SceneManager.LoadScene("LvlSelector");
                 break;
+            case "pause":
+                GameManager.instance.ActivePanelPause();
+                GameManager.instance.ChangeState(Gamestate.Pause);
+                break;
+            case "resume":
+                GameManager.instance.DesactivatePanelPause();
+                GameManager.instance.ChangeState(Gamestate.PawnTurn);
+                break;
             case "level1":
                 SceneManager.LoadScene("Tutorial_1");
                 break;
